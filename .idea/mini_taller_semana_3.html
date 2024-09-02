@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Noticiero Virtual - EMOL</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            display: flex;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 1200px; /* Ajusta el ancho máximo según sea necesario */
+            width: 100%;
+            background-color: #ffffff;
+        }
+
+        .top-sections {
+            background-color: #ffffff; /* Fondo blanco */
+            color: #888; /* Letras en gris */
+            padding: 5px 0;
+            text-align: center;
+            font-size: 12px;
+            border-bottom: 1px solid #ddd; /* Línea inferior para separación */
+        }
+
+        .top-sections a {
+            color: #888; /* Letras en gris */
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .top-sections a:hover {
+            text-decoration: underline;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            background-color: white;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            position: relative;
+            justify-content: space-between; /* Alinea elementos en los extremos */
+        }
+
+        .weather {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            position: absolute;
+            left: 20px;
+        }
+
+        .weather i {
+            font-size: 20px;
+            margin-right: 5px;
+            color: #007BFF; /* Color del ícono */
+        }
+
+        .weather p {
+            margin: 0;
+            margin-right: 10px;
+        }
+
+        .logo-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            flex: 1;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .logo h1 {
+            margin: 0;
+            font-size: 24px;
+            color: #007BFF;
+        }
+
+        .logo h1 span {
+            color: red;
+        }
+
+        .date-time {
+            font-size: 14px;
+            color: #555;
+        }
+
+        .login {
+            text-align: right;
+            font-size: 14px;
+        }
+
+        .login .emol-social {
+            color: #007BFF;
+            font-weight: bold;
+        }
+
+        .login .emol-social span {
+            color: grey;
+        }
+
+        .login a {
+            color: #007BFF;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+
+        .login a:hover {
+            text-decoration: underline;
+        }
+
+        .section-buttons {
+            display: flex;
+            padding: 10px 20px;
+            background-color: #f4f4f4;
+            border-bottom: 1px solid #ddd;
+            flex-wrap: wrap;
+            gap: 5px;
+        }
+
+        .section-buttons .button-special {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+            font-weight: bold;
+        }
+
+        .section-buttons .button-special img {
+            margin-right: 5px;
+        }
+
+        .section-buttons button {
+            background-color: #f9f9f9;
+            color: black;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 3px;
+            margin-right: 5px;
+            font-weight: bold;
+        }
+
+        .section-buttons button.special {
+            color: red;
+            font-weight: normal;
+        }
+
+        .section-buttons button span {
+            color: black;
+        }
+
+        .lower-sections {
+            text-align: center;
+            padding: 10px 0;
+            background-color: white;
+            font-size: 14px;
+            color: #007BFF;
+        }
+
+        .lower-sections a {
+            color: #007BFF;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+
+        .lower-sections a:hover {
+            text-decoration: underline;
+        }
+
+        .search-boxes {
+            text-align: right;
+            padding: 10px 20px;
+            background-color: white;
+            display: flex;
+            justify-content: flex-end;
+        }
+
+        .search-boxes div {
+            margin-left: 15px;
+        }
+
+        .search-boxes input[type="text"] {
+            padding: 5px;
+            border: 1px solid #ccc;
+            border-radius: 3px;
+            text-align: center;
+        }
+
+        .search-boxes img {
+            margin-left: 5px;
+            vertical-align: middle;
+        }
+
+        .emoltv-banner {
+            margin-top: 20px;
+            padding: 10px;
+            border-top: 5px solid red;
+            background-color: #f9f9f9;
+            text-align: left;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+        }
+
+        .emoltv-banner i {
+            color: red;
+            margin-right: 10px;
+        }
+
+        .emoltv-banner h2 {
+            margin: 0;
+            font-size: 18px;
+            color: red;
+        }
+
+        .emoltv-banner p {
+            margin: 0;
+            margin-left: 10px;
+            font-size: 16px;
+            color: black;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="top-sections">
+        <a href="#">EMOL</a>
+        <a href="#">EL MERCURIO</a>
+        <a href="#">BLOGS</a>
+        <a href="#">LEGAL</a>
+        <a href="#">CAMPO</a>
+        <a href="#">INVERSIONES</a>
+        <a href="#">AUTOS</a>
+        <a href="#">PROPIEDADES</a>
+        <a href="#">EMPLEOS</a>
+        <a href="#">ECONÓMICOS</a>
+        <a href="#">CLAUTOS-CASAS</a>
+        <a href="#">LA SEGUNDA</a>
+        <a href="#">LUN</a>
+    </div>
+
+    <header>
+        <div class="weather">
+            <p>Pronóstico:</p>
+            <i class="fas fa-cloud-sun"></i>
+            <p>Clima</p>
+        </div>
+        <div class="logo-container">
+            <div class="logo">
+                <h1>emol<span>.</span></h1>
+            </div>
+            <div class="date-time">
+                <p>Santiago: 01 de semptiembre del 2024 | Actualizado 19:09</p>
+            </div>
+        </div>
+        <div class="login">
+            <p><span class="emol-social">emol<span>.social</span></span></p>
+            <a href="#">Ingresar</a> | <a href="#">Registrarse</a>
+        </div>
+    </header>
+    <div class="section-buttons">
+        <button class="button-special">
+            <img src="https://via.placeholder.com/20/FFFFFF/FF0000?text=e" alt="Noticias">
+            Noticias
+        </button>
+        <button>Economía</button>
+        <button>Deportes</button>
+        <button>Espectáculos</button>
+        <button>Tendencias</button>
+        <button>Autos</button>
+        <button>Servicios</button>
+        <button class="special"><span>[O]</span></button>
+        <button class="special"><span>[tv]</span></button>
+        <button class="special"><span>[Emol social]</span></button>
+    </div>
+
+    <div class="lower-sections">
+        <a href="#">Chile</a> |
+        <a href="#">Mundo</a> |
+        <a href="#">Tecnología</a> |
+        <a href="#">Educación</a> |
+        <a href="#">Documentos</a> |
+        <a href="#">Multimedia</a> |
+        <a href="#">Juegos</a> |
+        <a href="#">Elecciones 2024</a> |
+        <a href="#">Pasatiempos</a> |
+        <a href="#">360<span style="color:red;">°</span></a>
+    </div>
+
+    <div class="search-boxes">
+        <div>
+            <input type="text" placeholder="Buscar Comunidad">
+            <img src="https://via.placeholder.com/20/00BFFF/FFFFFF?text=🔍" alt="Buscar Comunidad">
+        </div>
+        <div>
+            <input type="text" placeholder="Buscar">
+            <img src="https://via.placeholder.com/20/0000FF/FFFFFF?text=🔍" alt="Buscar">
+        </div>
+        <div>
+            <input type="text" placeholder="amarillas.com">
+            <img src="https://via.placeholder.com/20/FFFF00/FFFFFF?text=🔍" alt="Buscar amarillas.com">
+        </div>
+    </div>
+
+    <div class="emoltv-banner">
+        <i class="fas fa-circle"></i>
+        <h2>EMOLTV</h2>
+        <p>Streaming y entrevistas: La programación de este fin de semana</p>
+    </div>
+    <div class="sports-section" style="display: flex; align-items: center; padding: 20px;">
+        <div class="image-container" style="margin-right: 20px;">
+            <div class="category" style="color: gray; margin-bottom: 5px;">DEPORTES</div>
+            <img src="Noticia.jpg">
+        </div>
+        <div class="content">
+            <div class="title" style="color: blue;">Tras ser casi nulo el mes pasado: las dispares proyecciones de economistas sobre el Imacec de julio</div>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
